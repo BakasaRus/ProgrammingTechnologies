@@ -36,4 +36,17 @@ public class FoodItem extends GenericItem {
 
         return cloned;
     }
+
+    @Override
+    public String toString() {
+        return "FoodItem{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", analog=" + analog +
+                ", category=" + category +
+                ", dateOfIncome=" + dateOfIncome +
+                ", expires=" + expires +
+                '}';
+    }
 }

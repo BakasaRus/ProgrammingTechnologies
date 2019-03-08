@@ -32,4 +32,16 @@ public class TechnicalItem extends GenericItem {
 
         return cloned;
     }
+
+    @Override
+    public String toString() {
+        return "TechnicalItem{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", analog=" + analog +
+                ", category=" + category +
+                ", warrantyTime=" + warrantyTime +
+                '}';
+    }
 }

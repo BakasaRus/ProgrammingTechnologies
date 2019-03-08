@@ -43,4 +43,15 @@ public class GenericItem implements Cloneable {
 
 		return cloned;
 	}
+
+	@Override
+	public String toString() {
+		return "GenericItem{" +
+				"ID=" + ID +
+				", name='" + name + '\'' +
+				", price=" + price +
+				", analog=" + analog.ID +
+				", category=" + category +
+				'}';
+	}
 }

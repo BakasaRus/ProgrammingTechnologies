@@ -49,6 +49,7 @@ public class Main {
         GenericItem[] items = {item1, item2, item3, foodItem, technicalItem, foodItem1};
         for (GenericItem item : items) {
             item.printAll();
+            System.out.println(item);
             System.out.println();
         }
 
