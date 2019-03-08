@@ -1,5 +1,7 @@
 package StockListProject;
 
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
         GenericItem item1 = new GenericItem();
@@ -24,5 +26,15 @@ public class Main {
         item1.printAll();
         item2.printAll();
         item3.printAll();
+
+        FoodItem foodItem = new FoodItem();
+        foodItem.ID = 4;
+        foodItem.name = "Чебупели";
+        foodItem.price = 119.90f;
+        foodItem.category = Category.FOOD;
+        foodItem.dateOfIncome = new Date();
+        foodItem.expires = 90;
+
+        foodItem.printAll();
     }
 }
