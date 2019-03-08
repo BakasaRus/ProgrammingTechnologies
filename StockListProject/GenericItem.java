@@ -5,7 +5,10 @@ public class GenericItem {
 	public String name;
 	public float price;
 
+	public GenericItem analog;
+	public Category category = Category.GENERAL;
+
 	void printAll(){
-        System.out.printf("ID: %d , Name: %-20s , price:%5.2f \n",ID,name,price);
+        System.out.printf("ID: %d\nName: %s\nPrice: %5.2f\nCategory: %s\n", ID, name, price, category.name());
     }
 }
