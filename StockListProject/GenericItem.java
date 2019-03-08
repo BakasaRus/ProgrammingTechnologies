@@ -39,7 +39,8 @@ public class GenericItem implements Cloneable {
 		cloned.name = name;
 		cloned.price = price;
 		cloned.category = category;
-		cloned.analog = analog;
+		if (analog != null)
+			cloned.analog = (GenericItem) analog.clone();
 
 		return cloned;
 	}

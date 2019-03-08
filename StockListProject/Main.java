@@ -38,6 +38,7 @@ public class Main {
         foodItem1.category = Category.FOOD;
         foodItem1.dateOfIncome = new Date();
         foodItem1.expires = 90;
+        foodItem1.analog = foodItem;
 
         TechnicalItem technicalItem = new TechnicalItem();
         technicalItem.ID = 5;
@@ -56,8 +57,13 @@ public class Main {
         System.out.println(foodItem.equals(foodItem1));
 
         try {
-            FoodItem foodItem2 = (FoodItem) foodItem.clone();
-            System.out.println(foodItem.equals(foodItem2));
+            FoodItem foodItem2 = (FoodItem) foodItem1.clone();
+            System.out.println(foodItem1.equals(foodItem2));
+
+            foodItem2.analog.ID = 7;
+            foodItem2.analog.name = "Круггетсы";
+            foodItem2.analog.printAll();
+            System.out.println(foodItem1.equals(foodItem2));
         }
         catch (CloneNotSupportedException e) {
             throw new InternalError();
