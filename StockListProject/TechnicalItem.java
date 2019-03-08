@@ -23,4 +23,13 @@ public class TechnicalItem extends GenericItem {
     public int hashCode() {
         return Objects.hash(super.hashCode(), warrantyTime);
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        TechnicalItem cloned = (TechnicalItem) super.clone();
+
+        cloned.warrantyTime = warrantyTime;
+
+        return cloned;
+    }
 }

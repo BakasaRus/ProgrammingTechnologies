@@ -53,5 +53,13 @@ public class Main {
         }
 
         System.out.println(foodItem.equals(foodItem1));
+
+        try {
+            FoodItem foodItem2 = (FoodItem) foodItem.clone();
+            System.out.println(foodItem.equals(foodItem2));
+        }
+        catch (CloneNotSupportedException e) {
+            throw new InternalError();
+        }
     }
 }

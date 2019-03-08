@@ -26,4 +26,14 @@ public class FoodItem extends GenericItem {
     public int hashCode() {
         return Objects.hash(super.hashCode(), dateOfIncome, expires);
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        FoodItem cloned = (FoodItem) super.clone();
+
+        cloned.dateOfIncome = (Date) dateOfIncome.clone();
+        cloned.expires = expires;
+
+        return cloned;
+    }
 }
