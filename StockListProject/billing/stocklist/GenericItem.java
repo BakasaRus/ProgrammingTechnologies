@@ -1,16 +1,52 @@
-package StockListProject;
+package StockListProject.billing.stocklist;
 
 import java.util.Objects;
 
 public class GenericItem implements Cloneable {
-    public int ID;
-    public String name;
-    public float price;
+    protected int ID;
+    protected String name;
+    protected float price;
 
-    public GenericItem analog;
-    public Category category = Category.GENERAL;
+    protected GenericItem analog;
+    protected Category category = Category.GENERAL;
 
     static int currentID = 0;
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public GenericItem getAnalog() {
+        return analog;
+    }
+
+    public void setAnalog(GenericItem analog) {
+        this.analog = analog;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public GenericItem() {
         this.ID = GenericItem.currentID++;

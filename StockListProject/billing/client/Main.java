@@ -1,6 +1,7 @@
-package StockListProject;
+package StockListProject.billing.client;
 
 import java.util.Date;
+import StockListProject.billing.stocklist.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,16 +15,16 @@ public class Main {
         catalog.addItem(new FoodItem("Чебупицца", 99.90f, (short) 90));
 
         TechnicalItem technicalItem = new TechnicalItem();
-        technicalItem.name = "Мультиварка";
-        technicalItem.price = 5999.99f;
-        technicalItem.warrantyTime = 365;
-        technicalItem.category = Category.GENERAL;
+        technicalItem.setName("Мультиварка");
+        technicalItem.setPrice(5999.99f);
+        technicalItem.setWarrantyTime((short) 365);
+        technicalItem.setCategory(Category.GENERAL);
 
         catalog.addItem(technicalItem);
 
         try {
             FoodItem foodItem = (FoodItem) catalog.findItemByID(3).clone();
-            foodItem.name = "Круггетсы";
+            foodItem.setName("Круггетсы");
             catalog.addItem(foodItem);
         } catch (CloneNotSupportedException e) {
             System.out.println("Ошибка при клонировании объекта");

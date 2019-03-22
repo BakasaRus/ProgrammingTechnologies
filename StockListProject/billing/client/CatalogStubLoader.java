@@ -1,4 +1,9 @@
-package StockListProject;
+package StockListProject.billing.client;
+
+import StockListProject.billing.stocklist.Category;
+import StockListProject.billing.stocklist.FoodItem;
+import StockListProject.billing.stocklist.GenericItem;
+import StockListProject.billing.stocklist.ItemCatalog;
 
 import java.util.Date;
 

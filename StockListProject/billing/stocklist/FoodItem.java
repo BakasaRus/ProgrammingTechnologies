@@ -1,11 +1,27 @@
-package StockListProject;
+package StockListProject.billing.stocklist;
 
 import java.util.Date;
 import java.util.Objects;
 
 public class FoodItem extends GenericItem {
-    public Date dateOfIncome;
-    public short expires;
+    protected Date dateOfIncome;
+    protected short expires;
+
+    public Date getDateOfIncome() {
+        return dateOfIncome;
+    }
+
+    public void setDateOfIncome(Date dateOfIncome) {
+        this.dateOfIncome = dateOfIncome;
+    }
+
+    public short getExpires() {
+        return expires;
+    }
+
+    public void setExpires(short expires) {
+        this.expires = expires;
+    }
 
     public FoodItem(String name, float price, FoodItem analog, Date date, short expires) {
         super();

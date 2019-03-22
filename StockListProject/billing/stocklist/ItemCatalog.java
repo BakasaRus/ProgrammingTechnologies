@@ -1,4 +1,4 @@
-package StockListProject;
+package StockListProject.billing.stocklist;
 
 import java.util.ArrayList;
 import java.util.HashMap;

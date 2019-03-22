@@ -1,9 +1,17 @@
-package StockListProject;
+package StockListProject.billing.stocklist;
 
 import java.util.Objects;
 
 public class TechnicalItem extends GenericItem {
-    public short warrantyTime;
+    protected short warrantyTime;
+
+    public short getWarrantyTime() {
+        return warrantyTime;
+    }
+
+    public void setWarrantyTime(short warrantyTime) {
+        this.warrantyTime = warrantyTime;
+    }
 
     public void printAll() {
         super.printAll();
