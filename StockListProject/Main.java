@@ -38,8 +38,6 @@ public class Main {
                 Short.parseShort(itemFields[2])
         ));
 
-        catalog.printItems();
-
         long begin = new Date().getTime();
         for (int i = 0; i < 100000; i++)
             catalog.findItemByID(7);
@@ -51,5 +49,10 @@ public class Main {
             catalog.findItemByIDAL(7);
         end = new Date().getTime();
         System.out.println("In ArrayList: " + (end - begin));
+
+        CatalogLoader loader = new CatalogStubLoader();
+        loader.load(catalog);
+
+        catalog.printItems();
     }
 }
