@@ -1,5 +1,7 @@
 package StockListProject;
 
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
         ItemCatalog catalog = new ItemCatalog();
@@ -23,8 +25,7 @@ public class Main {
             FoodItem foodItem = (FoodItem) catalog.findItemByID(3).clone();
             foodItem.name = "Круггетсы";
             catalog.addItem(foodItem);
-        }
-        catch (CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e) {
             System.out.println("Ошибка при клонировании объекта");
         }
 
@@ -32,11 +33,23 @@ public class Main {
         String[] itemFields = line.split(";");
 
         catalog.addItem(new FoodItem(
-            itemFields[0],
-            Float.parseFloat(itemFields[1]),
-            Short.parseShort(itemFields[2])
+                itemFields[0],
+                Float.parseFloat(itemFields[1]),
+                Short.parseShort(itemFields[2])
         ));
 
         catalog.printItems();
+
+        long begin = new Date().getTime();
+        for (int i = 0; i < 100000; i++)
+            catalog.findItemByID(7);
+        long end = new Date().getTime();
+        System.out.println("In HashMap: " + (end - begin));
+
+        begin = new Date().getTime();
+        for (int i = 0; i < 100000; i++)
+            catalog.findItemByIDAL(7);
+        end = new Date().getTime();
+        System.out.println("In ArrayList: " + (end - begin));
     }
 }
