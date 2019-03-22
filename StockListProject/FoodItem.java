@@ -7,12 +7,29 @@ public class FoodItem extends GenericItem {
     public Date dateOfIncome;
     public short expires;
 
+    public FoodItem(String name, float price, FoodItem analog, Date date, short expires) {
+        super();
+        this.category = Category.FOOD;
+        this.name = name;
+        this.price = price;
+        this.analog = analog;
+        this.dateOfIncome = date;
+        this.expires = expires;
+    }
+
+    public FoodItem(String name, float price, short expires) {
+        this(name, price, null, new Date(), expires);
+    }
+
+    public FoodItem(String name) {
+        this(name, 0, null, new Date(), (short) 60);
+    }
+
     public void printAll() {
         super.printAll();
         System.out.printf("Date of income: %s\nExpires: %d\n", dateOfIncome, expires);
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -22,12 +39,10 @@ public class FoodItem extends GenericItem {
                 dateOfIncome.equals(foodItem.dateOfIncome);
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), dateOfIncome, expires);
     }
 
-    @Override
     public Object clone() throws CloneNotSupportedException {
         FoodItem cloned = (FoodItem) super.clone();
 
@@ -37,7 +52,6 @@ public class FoodItem extends GenericItem {
         return cloned;
     }
 
-    @Override
     public String toString() {
         return "FoodItem{" +
                 "ID=" + ID +

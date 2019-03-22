@@ -10,7 +10,6 @@ public class TechnicalItem extends GenericItem {
         System.out.printf("Warranty time: %d\n", warrantyTime);
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -19,12 +18,10 @@ public class TechnicalItem extends GenericItem {
         return warrantyTime == that.warrantyTime;
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), warrantyTime);
     }
 
-    @Override
     public Object clone() throws CloneNotSupportedException {
         TechnicalItem cloned = (TechnicalItem) super.clone();
 
