@@ -1,4 +1,6 @@
- public class Main{
+package Lab1;
+
+public class Main{
     public static void main(String[] args){
         System.out.println("Starting project");
 
@@ -7,10 +9,10 @@
         // Была ошибка: нужно было взять символ в кавычки
         char v_char = 'a';
         int v_int = 65999;
-        // Была ошибка: нужно было указать литеру "L"
+        // Была ошибка: нужно было указать "L"
         long v_long = 4294967296L;
-        // Была ошибка: нужно было указать литеру "f"
-        float v_float = 0.33333334f;
+        // Была ошибка: нужно было указать "F"
+        float v_float = 0.33333334F;
         double v_double = 0.3333333333333333;
         // Была ошибка: нужно было указать имя v_bool вместо v_double
         boolean v_bool = true;
