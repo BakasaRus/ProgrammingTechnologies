@@ -2,7 +2,7 @@ package StockListProject;
 
 import java.util.Objects;
 
-public class GenericItem {
+public class GenericItem implements Cloneable {
     public int ID;
     public String name;
     public float price;
@@ -52,7 +52,7 @@ public class GenericItem {
     public Object clone() throws CloneNotSupportedException {
         GenericItem cloned = (GenericItem) super.clone();
 
-        cloned.ID = ID;
+        cloned.ID = GenericItem.currentID++;
         cloned.name = name;
         cloned.price = price;
         cloned.category = category;
