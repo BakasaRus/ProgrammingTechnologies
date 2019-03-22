@@ -2,50 +2,41 @@ package StockListProject;
 
 public class Main {
     public static void main(String[] args) {
-        GenericItem item1 = new GenericItem("Рафаэлло", 249.90f, Category.FOOD);
-        GenericItem item2 = new GenericItem("Милка", 119.90f, item1);
-        GenericItem item3 = new GenericItem("Риттер Спорт", 99.90f, item2);
+        ItemCatalog catalog = new ItemCatalog();
 
-        FoodItem foodItem = new FoodItem("Чебупели", 119.90f, (short) 90);
-        FoodItem foodItem1 = new FoodItem("Чебупицца", 99.90f, (short) 90);
+        catalog.addItem(new GenericItem("Рафаэлло", 249.90f, Category.FOOD));
+        catalog.addItem(new GenericItem("Милка", 119.90f, catalog.findItemByID(0)));
+        catalog.addItem(new GenericItem("Риттер Спорт", 99.90f, catalog.findItemByID(1)));
+
+        catalog.addItem(new FoodItem("Чебупели", 119.90f, (short) 90));
+        catalog.addItem(new FoodItem("Чебупицца", 99.90f, (short) 90));
 
         TechnicalItem technicalItem = new TechnicalItem();
-        technicalItem.ID = 5;
         technicalItem.name = "Мультиварка";
         technicalItem.price = 5999.99f;
         technicalItem.warrantyTime = 365;
         technicalItem.category = Category.GENERAL;
 
-        GenericItem[] items = {item1, item2, item3, foodItem, technicalItem, foodItem1};
-        for (GenericItem item : items) {
-            item.printAll();
-            System.out.println(item);
-            System.out.println();
-        }
-
-        System.out.println(foodItem.equals(foodItem1));
+        catalog.addItem(technicalItem);
 
         try {
-            FoodItem foodItem2 = (FoodItem) foodItem1.clone();
-            System.out.println(foodItem1.equals(foodItem2));
-
-            foodItem2.analog.ID = 7;
-            foodItem2.analog.name = "Круггетсы";
-            foodItem2.analog.printAll();
-            System.out.println(foodItem1.equals(foodItem2));
+            FoodItem foodItem = (FoodItem) catalog.findItemByID(3).clone();
+            foodItem.name = "Круггетсы";
+            catalog.addItem(foodItem);
         }
         catch (CloneNotSupportedException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Ошибка при клонировании объекта");
         }
 
         String line = "Конфеты ’Маска’;45;120";
-        String itemFields[] = line.split(";");
-        FoodItem candy = new FoodItem(
-                itemFields[0],
-                Float.parseFloat(itemFields[1]),
-                Short.parseShort(itemFields[2])
-        );
+        String[] itemFields = line.split(";");
 
-        candy.printAll();
+        catalog.addItem(new FoodItem(
+            itemFields[0],
+            Float.parseFloat(itemFields[1]),
+            Short.parseShort(itemFields[2])
+        ));
+
+        catalog.printItems();
     }
 }
