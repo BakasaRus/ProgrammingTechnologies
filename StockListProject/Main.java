@@ -1,7 +1,5 @@
 package StockListProject;
 
-import java.util.Date;
-
 public class Main {
     public static void main(String[] args) {
         GenericItem item1 = new GenericItem("Рафаэлло", 249.90f, Category.FOOD);
@@ -39,5 +37,15 @@ public class Main {
         catch (CloneNotSupportedException e) {
             System.out.println(e.getMessage());
         }
+
+        String line = "Конфеты ’Маска’;45;120";
+        String itemFields[] = line.split(";");
+        FoodItem candy = new FoodItem(
+                itemFields[0],
+                Float.parseFloat(itemFields[1]),
+                Short.parseShort(itemFields[2])
+        );
+
+        candy.printAll();
     }
 }
