@@ -9,13 +9,18 @@ import java.sql.SQLException;
 
 public class ItemDAOMain {
     public static void main(String[] args) {
-        MusicItem item;
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:db.sqlite")) {
+            MusicItem item;
             ItemDAO dao = new ItemDAO(connection);
+
             item = dao.searchById(1L);
             System.out.println(item);
+
             item = dao.searchById(100L);
             System.out.println(item);
+
+            System.out.println(dao.searchByKeyword("of"));
+            System.out.println(dao.searchByKeyword("Gay"));
         }
         catch (SQLException e) {
             e.printStackTrace();

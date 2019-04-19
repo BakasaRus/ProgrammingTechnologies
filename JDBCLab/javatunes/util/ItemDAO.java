@@ -75,12 +75,12 @@ public class ItemDAO
          //-- if ID not found, the return value remains null --//
          if (rs.next())
             result = new MusicItem(
-                    (long) rs.getInt("ITEM_ID"),
-                    rs.getString("Title"),
-                    rs.getString("Artist"),
-                    rs.getString("ReleaseDate"),
-                    rs.getBigDecimal("ListPrice"),
-                    rs.getBigDecimal("Price")
+                (long) rs.getInt("ITEM_ID"),
+                rs.getString("Title"),
+                rs.getString("Artist"),
+                rs.getString("ReleaseDate"),
+                rs.getBigDecimal("ListPrice"),
+                rs.getBigDecimal("Price")
             );
       }
       finally
@@ -99,20 +99,31 @@ public class ItemDAO
    throws SQLException
    {
       // create storage for the results
-      Collection<MusicItem> result = new ArrayList<MusicItem>();
+      Collection<MusicItem> result = new ArrayList<>();
       
       // create the %keyword% wildcard syntax used in SQL LIKE operator
       String wildcarded = "%" + keyword + "%";
       
       //-- set the ? parameters on the PreparedStatement --//
-      
-      
+      String sql = "Select * From Item Where Title Like ?";
+      PreparedStatement pstmt = m_conn.prepareStatement(sql);
+      pstmt.setString(1, wildcarded);
+
       //-- execute the PreparedStatement, get a ResultSet back --//
-      
+      ResultSet rs = pstmt.executeQuery();
       
       //-- iterate through the ResultSet, extracting data from each row and creating an ItemValue from it --//
       //-- add the ItemValue to the Collection via Collection's add method --//
-      
+      while (rs.next()) {
+          result.add(new MusicItem(
+              (long) rs.getInt("ITEM_ID"),
+              rs.getString("Title"),
+              rs.getString("Artist"),
+              rs.getString("ReleaseDate"),
+              rs.getBigDecimal("ListPrice"),
+              rs.getBigDecimal("Price")
+          ));
+      }
       
       // return the Collection
       return result;
