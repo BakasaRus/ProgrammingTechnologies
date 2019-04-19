@@ -3,6 +3,7 @@ package JDBCLab;
 import JDBCLab.javatunes.util.ItemDAO;
 import JDBCLab.javatunes.util.MusicItem;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,6 +22,17 @@ public class ItemDAOMain {
 
             System.out.println(dao.searchByKeyword("of"));
             System.out.println(dao.searchByKeyword("Gay"));
+
+            MusicItem newItem = new MusicItem(
+                0L,
+                "Hello",
+                "Adele",
+                "2014-05-07",
+                BigDecimal.valueOf(77.88),
+                BigDecimal.valueOf(78.99)
+            );
+
+            dao.create(newItem);
         }
         catch (SQLException e) {
             e.printStackTrace();
