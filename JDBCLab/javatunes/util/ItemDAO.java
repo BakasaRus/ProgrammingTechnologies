@@ -12,7 +12,6 @@ package JDBCLab.javatunes.util;
 import java.sql.*;
 import java.util.Collection;
 import java.util.ArrayList;
-import java.math.BigDecimal;
 
 public class ItemDAO
 {
@@ -75,15 +74,14 @@ public class ItemDAO
          //-- if ID found, extract data from the ResultSet and initialize the ItemValue return value --//
          //-- if ID not found, the return value remains null --//
          if (rs.next())
-             result = new MusicItem(
-                     (long) rs.getInt("ITEM_ID"),
-                     rs.getString("Title"),
-                     rs.getString("Artist"),
-                     rs.getDate("ReleaseDate"),
-                     rs.getBigDecimal("ListPrice"),
-                     rs.getBigDecimal("Price")
-             );
-
+            result = new MusicItem(
+                    (long) rs.getInt("ITEM_ID"),
+                    rs.getString("Title"),
+                    rs.getString("Artist"),
+                    rs.getString("ReleaseDate"),
+                    rs.getBigDecimal("ListPrice"),
+                    rs.getBigDecimal("Price")
+            );
       }
       finally
       {
