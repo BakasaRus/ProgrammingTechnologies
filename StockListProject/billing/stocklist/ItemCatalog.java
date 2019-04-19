@@ -10,13 +10,11 @@ public class ItemCatalog {
     private ArrayList<GenericItem> ALCatalog = new ArrayList<>();
 
     public void addItem(GenericItem item) throws ItemAlreadyExistsException {
-        try {
-            catalog.put(item.ID, item); // Добавляем товар в HashMap
-            ALCatalog.add(item); // Добавляем тот же товар в ArrayList
-        }
-        catch (Exception e) {
+        if (catalog.containsKey(item.ID))
             throw new ItemAlreadyExistsException();
-        }
+
+        catalog.put(item.ID, item); // Добавляем товар в HashMap
+        ALCatalog.add(item); // Добавляем тот же товар в ArrayList
     }
 
     public void printItems() {

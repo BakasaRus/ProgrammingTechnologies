@@ -16,10 +16,11 @@ public class CatalogStubLoader implements CatalogLoader {
         try {
             cat.addItem(item1);
             cat.addItem(item2);
+            cat.addItem(item2);
         }
         catch (ItemAlreadyExistsException e) {
             e.printStackTrace();
-            throw new CatalogLoadException(e.getMessage());
+            throw new CatalogLoadException();
         }
     }
 }

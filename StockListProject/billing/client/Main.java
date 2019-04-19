@@ -18,7 +18,6 @@ public class Main {
             catalog.addItem(new FoodItem("Чебупели", 119.90f, (short) 90));
             catalog.addItem(new FoodItem("Чебупицца", 99.90f, (short) 90));
         } catch (ItemAlreadyExistsException e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
@@ -31,7 +30,6 @@ public class Main {
         try {
             catalog.addItem(technicalItem);
         } catch (ItemAlreadyExistsException e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
@@ -42,7 +40,7 @@ public class Main {
         } catch (CloneNotSupportedException e) {
             System.out.println("Ошибка при клонировании объекта");
         } catch (ItemAlreadyExistsException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
         String line = "Конфеты ’Маска’;45;120";
@@ -55,7 +53,6 @@ public class Main {
                     Short.parseShort(itemFields[2])
             ));
         } catch (ItemAlreadyExistsException e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
@@ -76,7 +73,6 @@ public class Main {
         try {
             loader.load(catalog);
         } catch (CatalogLoadException e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
