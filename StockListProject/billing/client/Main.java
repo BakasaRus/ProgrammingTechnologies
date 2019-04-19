@@ -1,18 +1,26 @@
 package StockListProject.billing.client;
 
 import java.util.Date;
+
+import StockListProject.billing.exceptions.CatalogLoadException;
+import StockListProject.billing.exceptions.ItemAlreadyExistsException;
 import StockListProject.billing.stocklist.*;
 
 public class Main {
     public static void main(String[] args) {
         ItemCatalog catalog = new ItemCatalog();
 
-        catalog.addItem(new GenericItem("Рафаэлло", 249.90f, Category.FOOD));
-        catalog.addItem(new GenericItem("Милка", 119.90f, catalog.findItemByID(0)));
-        catalog.addItem(new GenericItem("Риттер Спорт", 99.90f, catalog.findItemByID(1)));
+        try {
+            catalog.addItem(new GenericItem("Рафаэлло", 249.90f, Category.FOOD));
+            catalog.addItem(new GenericItem("Милка", 119.90f, catalog.findItemByID(0)));
+            catalog.addItem(new GenericItem("Риттер Спорт", 99.90f, catalog.findItemByID(1)));
 
-        catalog.addItem(new FoodItem("Чебупели", 119.90f, (short) 90));
-        catalog.addItem(new FoodItem("Чебупицца", 99.90f, (short) 90));
+            catalog.addItem(new FoodItem("Чебупели", 119.90f, (short) 90));
+            catalog.addItem(new FoodItem("Чебупицца", 99.90f, (short) 90));
+        } catch (ItemAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
 
         TechnicalItem technicalItem = new TechnicalItem();
         technicalItem.setName("Мультиварка");
@@ -20,7 +28,12 @@ public class Main {
         technicalItem.setWarrantyTime((short) 365);
         technicalItem.setCategory(Category.GENERAL);
 
-        catalog.addItem(technicalItem);
+        try {
+            catalog.addItem(technicalItem);
+        } catch (ItemAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
 
         try {
             FoodItem foodItem = (FoodItem) catalog.findItemByID(3).clone();
@@ -28,16 +41,23 @@ public class Main {
             catalog.addItem(foodItem);
         } catch (CloneNotSupportedException e) {
             System.out.println("Ошибка при клонировании объекта");
+        } catch (ItemAlreadyExistsException e) {
+            System.out.println(e.getMessage());
         }
 
         String line = "Конфеты ’Маска’;45;120";
         String[] itemFields = line.split(";");
 
-        catalog.addItem(new FoodItem(
-                itemFields[0],
-                Float.parseFloat(itemFields[1]),
-                Short.parseShort(itemFields[2])
-        ));
+        try {
+            catalog.addItem(new FoodItem(
+                    itemFields[0],
+                    Float.parseFloat(itemFields[1]),
+                    Short.parseShort(itemFields[2])
+            ));
+        } catch (ItemAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
 
         long begin = new Date().getTime();
         for (int i = 0; i < 100000; i++)
@@ -53,7 +73,12 @@ public class Main {
 
         // Default methods
         CatalogLoader loader = new CatalogStubLoader();
-        loader.load(catalog);
+        try {
+            loader.load(catalog);
+        } catch (CatalogLoadException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
 
         catalog.printItems();
     }
