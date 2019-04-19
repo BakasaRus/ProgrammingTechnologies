@@ -51,6 +51,7 @@ public class Main {
         end = new Date().getTime();
         System.out.println("In ArrayList: " + (end - begin));
 
+        // Default methods
         CatalogLoader loader = new CatalogStubLoader();
         loader.load(catalog);
 
