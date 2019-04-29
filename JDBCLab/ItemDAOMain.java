@@ -17,6 +17,9 @@ public class ItemDAOMain {
             item = dao.searchById(1L);
             System.out.println(item);
 
+            item = dao.searchById(26L);
+            System.out.println(item);
+
             item = dao.searchById(100L);
             System.out.println(item);
 
@@ -27,12 +30,14 @@ public class ItemDAOMain {
                 0L,
                 "Hello",
                 "Adele",
-                "2014-05-07",
+                "2015-10-22",
                 BigDecimal.valueOf(77.88),
                 BigDecimal.valueOf(78.99)
             );
 
             dao.create(newItem);
+
+            dao.close();
         }
         catch (SQLException e) {
             e.printStackTrace();

@@ -138,7 +138,7 @@ public class ItemDAO
         //-- set the ? parameters on the PreparedStatement --//
         stmt.setString(1, item.getTitle());
         stmt.setString(2, item.getArtist());
-        stmt.setDate(3, releaseDate);
+        stmt.setString(3, item.getReleaseDateString());
         stmt.setBigDecimal(4, item.getListPrice());
         stmt.setBigDecimal(5, item.getPrice());
         stmt.setInt(6, 1);
@@ -153,23 +153,19 @@ public class ItemDAO
    //// PreparedStatement and Update Labs ////
    public void close()
    {
-      /*
-      REMOVE this comment in PreparedStatement Lab
       try
       {
          //// PreparedStatement Lab ////
          //-- close the PreparedStatement for searchByKeyword --//
-         
+         pstmt.close();
          
          //// Update Lab ////
          //-- close the PreparedStatement for create --//
-         
+         stmt.close();
       }
       catch (SQLException sqle)
       {
          JDBCUtilities.printSQLException(sqle);
       }
-      REMOVE this comment in the PreparedStatement Lab
-      */
    }
 }
