@@ -4,7 +4,7 @@ public class U1901Bank {
     private int to = 0;
     private int from = 220;
 
-    public void calc(int transaction, long timeout) {
+    public synchronized void calc(int transaction, long timeout) {
         System.out.println(
             "Before: Thread = " + Thread.currentThread().getName() +
             ", To = " + to +
